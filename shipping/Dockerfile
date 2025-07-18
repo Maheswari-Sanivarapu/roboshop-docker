@@ -12,3 +12,4 @@ FROM maven
 WORKDIR /opt/server
 COPY pom.xml .
 COPY src/ /opt/server
+CMD ["sleep", "1000"]
