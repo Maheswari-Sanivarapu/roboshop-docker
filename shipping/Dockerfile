@@ -1,5 +1,7 @@
 FROM maven
 WORKDIR /opt/server
+COPY pom.xml .
+COPY src .
 RUN mvn clean package
 RUN mv  . /opt/server/shipping.jar
 ENV CART_ENDPOINT=cart:8080 \
