@@ -1,0 +1,33 @@
+services:
+  mongodb:
+    image: maheswari450/mongodb:v1
+    container_name: mongodb
+  catalogue:
+    image: maheswari450/catalogue:v1
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+  user:
+    image: maheswari450/user:v1
+    container_name: user
+    depends_on:
+    - mongodb
+    - redis
+  cart:
+    image: maheswari450/cart:v1
+    container_name: cart
+    depends_on:
+    - redis
+    - catalogue
+  mysql:
+    image: maheswari450/mysql:v1
+    container_name: mysql
+  shipping:
+    image: maheswari450/shipping:v1
+    container_name: shipping
+    depends_on:
+    - mysql
+    - cart
